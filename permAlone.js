@@ -1,6 +1,10 @@
-function permAlone(str) {
+function permute(str) {
     let strArray=str.split('');
     
+    if (strArray.length==1){
+
+        return [strArray]
+    }
       function recursivePermute(stringArray, outputArray, index) {
     
         const newLetter = stringArray[index];
@@ -27,7 +31,29 @@ function permAlone(str) {
         return recursivePermute(stringArray, newArray, index);
       }
     
-    console.log(recursivePermute(strArray,[...strArray[0]],1));
-    
-    return str
+ return recursivePermute(strArray,[...strArray[0]],1);
+
     }
+
+    function arrHasSameConseqElements(arr){
+       
+for (let i=0;i<arr.length-1;i++){
+if(arr[i]===arr[i+1]){
+    return true
+}
+
+}
+return false
+    }
+ 
+
+  function permAlone(str){
+
+    
+
+    return permute(str).filter(e=>!arrHasSameConseqElements(e)).length
+  }
+
+  console.log(permAlone("a"))
+
+  
